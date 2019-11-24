@@ -11,11 +11,11 @@
 @snap[west span-80]
 @ul[list-spaced-bullets text-white text-09]
 - <u>D</u>ata <u>D</u>riven <u>D</u>ocuments
-- Functional Javascript
-- Full capibility of modern browser
-- Attach data to DOM elements
-- Customize with CSS, HTML, and SVG
-- Without tied to proprietary software
+- functional Javascript
+- full capibility of modern browser
+- attach data to DOM elements
+- customize with CSS, HTML, and SVG
+- without tied to proprietary software
 @ulend
 @snapend
 
@@ -88,15 +88,15 @@ d3.dsv(",", "ncaa_nfl.csv").then(function (data) {
 ---
 
 @snap[north-east span-100 text-white text-06]
-loading & cleaning data
+selecting & binding data to DOM elements
 @snapend
 
 ```javascript zoom-18
 // inside callback makeGraph(data)
 svg.selectAll("circle")
-               .data(data)
-               .enter()
-               .append("circle");
+   .data(data)
+   .enter()
+   .append("circle");
 ```
 
 @snap[south span-100 text-gray text-08]
@@ -106,5 +106,57 @@ svg.selectAll("circle")
 @[5](appends circle to svg)
 @snapend
 
+---
 
+@snap[north-east span-100 text-white text-06]
+dynamically scaling data & add axis
+@snapend
 
+```javascript zoom-18
+var xMax = d3.max(data, function (d) {
+                return d[dataX]
+            });
+var xMin = d3.min(data, function (d) {
+                return d[dataX]
+            });
+var xScale = d3.scaleLinear()
+                .domain([xMin, xMax])
+                .range([0, width - margin.right])
+                .nice();
+```
+
+@snap[south span-100 text-gray text-08]
+@[1-3](computes maximum from dataX of data)
+@[4-6](computes maximum from dataX of data)
+@[7-8](creates a linear scale between xMin and xMax)
+@[9](sets the range of the x axis to be from the beginning of svg to end minus margin)
+@[10](nice function will ensure ticks are on nice round values)
+@snapend
+
+---
+
+@snap[north-east span-100 text-white text-06]
+dynamically scaling data & add axis
+@snapend
+
+```javascript zoom-18
+// inside callback makeGraph(data)
+svg.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", function (d, i) {
+           return xScale(d[dataX]);
+    })
+    .attr("cy", function (d) {
+           return yScale(d[dataY]);
+    });
+svg.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale));
+```
+
+@snap[south span-100 text-gray text-08]
+@[5-10](uses previous scales to plot circle on svg with scaled x, y)
+@[11-13](appends y axis to svg using yScale)
+@snapend
