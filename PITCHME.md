@@ -58,7 +58,7 @@ var svg = d3.select("body")
 @[1](select body of page)
 @[2](append svg)
 @[3-7, zoom-12](add attributes, class, and margins)
-@[](how do we display data on the svg?)
+@[0](how do we display data on the svg?)
 @snapend
 
 
