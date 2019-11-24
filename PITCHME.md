@@ -10,8 +10,8 @@
 
 @snap[west span-80]
 @ul[list-spaced-bullets text-white text-09]
-- <u>D</u>ata <u>D</u>riven <u>D</u>ocuments
-- functional Javascript
+- <u>d</u>ata <u>d</u>riven <u>d</u>ocuments
+- functional javascript
 - full capibility of modern browser
 - attach data to DOM elements
 - customize with CSS, HTML, and SVG
@@ -58,7 +58,10 @@ var svg = d3.select("body")
 @[1](select body of page)
 @[2](append svg)
 @[3-7, zoom-12](add attributes, class, and margins)
+@[](how do we display data on the svg?)
 @snapend
+
+
 
 ---
 
@@ -120,9 +123,9 @@ var xMin = d3.min(data, function (d) {
                 return d[dataX]
             });
 var xScale = d3.scaleLinear()
-                .domain([xMin, xMax])
-                .range([0, width - margin.right])
-                .nice();
+               .domain([xMin, xMax])
+               .range([0, width - margin.right])
+               .nice();
 ```
 
 @snap[south span-100 text-gray text-08]
@@ -157,6 +160,6 @@ svg.append("g")
 ```
 
 @snap[south span-100 text-gray text-08]
-@[5-10](uses previous scales to plot circle on svg with scaled x, y)
-@[11-13](appends y axis to svg using yScale)
+@[6-11](uses previous scales to plot circle on svg with scaled x, y)
+@[12-14](appends y axis to svg using yScale)
 @snapend
