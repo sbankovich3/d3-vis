@@ -24,14 +24,15 @@
 
 ---
 
-@snap[north-east span-100 text-pink text-06]
+@snap[north-east span-100 text-white text-06]
 loading & cleaning data
 @snapend
 
 ```javascript zoom-18
-d3.dsv(",", "2017ydscarr_draftdata.csv").then(function (data) {
+var parseYear = d3.timeParse("%Y");
+d3.dsv(",", "ncaa_nfl.csv").then(function (data) {
             data.forEach(element => {
-                element['athlete_id'] = +element['athlete_id'];
+                element['year'] = parseYear(element['year']);
                 element['rushing_yards'] = +element['rushing_yards'];
                 element['rushing_attempts'] = +element['rushing_attempts'];
                 element['Pick'] = +element['Pick'];
@@ -41,8 +42,8 @@ d3.dsv(",", "2017ydscarr_draftdata.csv").then(function (data) {
 ```
 
 @snap[south span-100 text-gray text-08]
-@[1](load data and choose delimiter.)
-@[2-7, zoom-13](format data with correct type)
-@[8-9, zoom-12](do something with the data in a callback)
+@[2](load data and choose delimiter.)
+@[1,3-8, zoom-13](format data with correct type)
+@[9-10, zoom-12](do something with the data in a callback)
 @snapend
 
