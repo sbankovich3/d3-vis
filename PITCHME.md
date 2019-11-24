@@ -31,14 +31,14 @@ loading & cleaning data
 ```javascript zoom-18
 var parseYear = d3.timeParse("%Y");
 d3.dsv(",", "ncaa_nfl.csv").then(function (data) {
-            data.forEach(element => {
-                element['year'] = parseYear(element['year']);
-                element['rushing_yards'] = +element['rushing_yards'];
-                element['rushing_attempts'] = +element['rushing_attempts'];
-                element['Pick'] = +element['Pick'];
-            })
-       // callback
-       })
+        data.forEach(element => {
+            element['year'] = parseYear(element['year']);
+            element['rushing_yards'] = +element['rushing_yards'];
+            element['rushing_attempts'] = +element['rushing_attempts'];
+            element['Pick'] = +element['Pick'];
+        })
+   // callback
+})
 ```
 
 @snap[south span-100 text-gray text-08]
