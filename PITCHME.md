@@ -44,7 +44,7 @@
 first, create svg
 @snapend
 
-```javascript zoom-18
+```javascript zoom-14
 var svg = d3.select("body")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -52,13 +52,14 @@ var svg = d3.select("body")
             .append("g")
             .attr("class", "svg")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 ```
 
 @snap[south span-100 text-gray text-08]
 @[1](select body of page)
 @[2](append svg)
 @[3-7, zoom-12](add attributes, class, and margins)
-@[0](how do we display data on the svg?)
+@[11](how do we display data on the svg?)
 @snapend
 
 
