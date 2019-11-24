@@ -51,15 +51,16 @@ var svg = d3.select("body")
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("class", "svg")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+            .attr("transform", "translate(" 
+                  + margin.left + "," + margin.top + ")");
+    
 ```
 
 @snap[south span-100 text-gray text-08]
 @[1](select body of page)
 @[2](append svg)
-@[3-7, zoom-12](add attributes, class, and margins)
-@[11](how do we display data on the svg?)
+@[3-8, zoom-12](add attributes, class, and margins)
+@[9](how do we display data on the svg?)
 @snapend
 
 
