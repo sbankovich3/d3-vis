@@ -1,9 +1,9 @@
----?color=linear-gradient(90deg, #5384AD 65%, white 35%)
+---?color=linear-gradient(90deg, #9c1616 85%, white 15%)
 @snap[north-west h4-white]
 #### d3 & data visualizations
 @snapend
 
----?color=linear-gradient(90deg, #5384AD 85%, white 15%)
+---?color=linear-gradient(90deg, #9c1616 85%, white 15%)
 @snap[north-west h4-white]
 #### what is d3.js?
 @snapend
@@ -22,6 +22,23 @@
 @snap[east span-45]
 @snapend
 
+---?color=linear-gradient(90deg, #9c1616 85%, white 15%)
+@snap[north-west h4-white]
+#### d3.js basics
+@snapend
+
+@snap[west span-80]
+@ul[list-spaced-bullets text-white text-09]
+- loading & cleaning data
+- selecting & binding to DOM elements
+- dynamically scaling & axis
+- tool tips
+- transitions & animations
+@ulend
+@snapend
+
+@snap[east span-45]
+@snapend
 ---
 
 @snap[north-east span-100 text-white text-06]
