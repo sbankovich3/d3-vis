@@ -10,7 +10,7 @@
 
 @snap[west span-80]
 @ul[list-spaced-bullets text-white text-09]
-- **D**ata **D**riven **D**ocuments
+- <u>D</u>ata **D**riven **D**ocuments
 - Functional Javascript
 - Full capibility of modern browser
 - Attach data to DOM elements
@@ -30,10 +30,9 @@
 @snap[west span-80]
 @ul[list-spaced-bullets text-white text-09]
 - loading & cleaning data
-- selecting & binding to DOM elements
-- dynamically scaling & axis
-- tool tips
-- transitions & animations
+- selecting & binding data to DOM elements
+- dynamically scaling data & add axis
+- tool tips, inputs, & animations
 @ulend
 @snapend
 
