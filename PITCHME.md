@@ -3,12 +3,12 @@
 #### d3 & data visualizations
 @snapend
 
----?color=linear-gradient(90deg, #5384AD 65%, white 35%)
+---?color=linear-gradient(90deg, #5384AD 85%, white 15%)
 @snap[north-west h4-white]
 #### what is d3.js?
 @snapend
 
-@snap[west span-55]
+@snap[west span-80]
 @ul[list-spaced-bullets text-white text-09]
 - **D**ata **D**riven **D**ocuments
 - Functional Javascript
