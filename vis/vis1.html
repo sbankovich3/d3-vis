@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="../lib/d3.v5.min.js"></script>
+<script src="../lib/d3-dsv.min.js"></script>
+<script src="../lib/d3-tip.min.js"></script>
+<select id="selectedFilter">
+    <option value="show" selected="selected">Show undrafted players</option>
+    <option value="hide">Hide undrafted players</option>
+</select>
+<style type="text/css">
+    #selectedFilter {
+        position: absolute;
+        top: 30px;
+        left: 50px;
+    }
+
+    .d3-tip {
+        line-height: 1;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 10px;
+    }
+
+    .title {
+        line-height: 1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 24px;
+    }
+
+    .label {
+        line-height: 1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 8px;
+    }
+
+    .mid {
+        line-height: 1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 12px;
+    }
+
+
+    @media print {
+        svg {
+            page-break-after: always;
+        }
+    }
+</style>
+
+<body>
+    <script type="text/javascript">
+        var margin = { top: 100, right: 100, bottom: 50, left: 50 }
+            , width = 900
+            , height = 400;
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("class", "svg")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        d3.dsv(",", "2017ydscarr_draftdata.csv").then(function (data) {
+            data.forEach(element => {
+                element['athlete_id'] = +element['athlete_id'];
+                element['rushing_yards'] = +element['rushing_yards'];
+                element['rushing_attempts'] = +element['rushing_attempts'];
+                element['Pick'] = +element['Pick'];
+            })
+
+
+
+
+
+            makeGraph(data, 'show')
+            d3.select('#selectedFilter')
+                .on("change", function () {
+                    var selct = document.getElementById("selectedFilter").value;
+                    if (selct == "hide") {
+                        var filteredData = data.filter(x => x.Pick > 0)
+                        makeGraph(filteredData)
+                    } else {
+                        makeGraph(data)
+                    }
+
+                });
+        })
+
+        function makeGraph(data) {
+            d3.select(".svg").selectAll("*").remove();
+            var tip = d3.tip()
+                .attr('class', 'd3-tip')
+                .html(function (d) {
+                    var yards_per_carry = d['rushing_yards'] / d['rushing_attempts']
+                    var draftNo = d['Pick']
+                    var htmlString = "Name: " + d['athlete_name'] + " <br>Yards / Attempt: " + yards_per_carry.toFixed(4) + " <br>Yards: " + d['rushing_yards'] + " <br>Attempts: " + d['rushing_attempts'] + " <br>School: " + d['school_name'];
+                    if (draftNo > 0) {
+                        htmlString = htmlString + " <br>Draft Number: " + draftNo;
+                    }
+                    return htmlString;
+                });
+
+            var carrMax = d3.max(data, function (d) {
+                return d['rushing_attempts']
+            });
+
+            var yardsMax = d3.max(data, function (d) {
+                return d['rushing_yards']
+            });
+
+            var yScale = d3.scaleLinear()
+                .domain([0, yardsMax])
+                .range([height, 0])
+                .nice();
+
+            var xScale = d3.scaleLinear()
+                .domain([0, carrMax])
+                .range([0, width - margin.right])
+                .nice();
+
+            var pickMax = d3.max(data, function (d) {
+                return d['Pick']
+            });
+
+            var sequentialScale = d3.scaleSequential()
+                .domain([1, pickMax])
+                .interpolator(d3.interpolateReds);
+
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(d3.axisLeft(yScale));
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(xScale));
+
+            svg.call(tip);
+
+            svg.selectAll(".dot")
+                .data(data)
+                .enter().append("circle")
+                .attr("cx", function (d, i) {
+                    var x = xScale(d['rushing_attempts'])
+                    return x;
+                })
+                .attr("cy", function (d) {
+                    var y = yScale(d['rushing_yards'])
+                    return y
+                })
+                .attr("r", function (d) {
+                    if (d.Pick){
+                        return (300 - d.Pick) / 25
+                    } else {
+                        return 1
+                    }
+                })
+                .style("fill", function (d) {
+                    if (d.Pick) {
+                        return sequentialScale(d['Pick']);
+                    }
+                })
+                .style("stroke", "black")
+                .style('stroke-width', 0.5)
+                .style("opacity",  function (d) {
+                    if (!d.Pick) {
+                        return 0.25
+                    } else {
+                        return 1
+                    }
+                })
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide);
+
+            svg.append("text")
+                .attr("x", (width - margin.right) / 2)
+                .attr("y", -50)
+                .style("text-anchor", "middle")
+                .text("2017 NCAA Running Backs as Draft Picks")
+                .attr("class", "title");
+
+            svg.append("text")
+                .attr("x", (width - margin.right) / 2)
+                .attr("y", height + margin.bottom - 10)
+                .style("text-anchor", "middle")
+                .text("Attempts / Carries")
+                .attr("class", "label");
+
+            svg.append("text")
+                .attr("x", -135)
+                .attr("y", -40)
+                .style("text-anchor", "end")
+                .text("Total Season Rushing Yards")
+                .attr("class", "label")
+                .attr("transform", function (d) {
+                    return "rotate(-90)"
+                });
+
+            var legend = svg.selectAll(".legend")
+                .data(sequentialScale.ticks(9).slice(1).reverse())
+                .enter().append("g")
+                .attr("class", "legend")
+                .attr("transform", function (d, i) { return "translate(" + (width - 75) + "," + (20 + i * 20) + ")"; });
+
+            legend.append("rect")
+                .attr("width", 20)
+                .attr("height", 20)
+                .style("fill", sequentialScale);
+
+            legend.append("text")
+                .attr("x", 26)
+                .attr("y", 10)
+                .attr("dy", ".35em")
+                .text(String)
+                .attr("class", "label");
+
+            svg.append("text")
+                .attr("x", width - 65 )
+                .attr("y", 15)
+                .style("text-anchor", "middle")
+                .text("Draft Order")
+                .attr("class", "mid");
+        }
+
+
+    </script>
+</body>
+
+</html>

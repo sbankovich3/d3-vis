@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="../lib/d3.v5.min.js"></script>
+<script src="../lib/d3-dsv.min.js"></script>
+<script src="../lib/d3-tip.min.js"></script>
+<select id="selectedFilterX">
+    <option value="Att.1" selected="selected">NFL Attempts</option>
+    <option value="CarAV">NFL Career Average</option>
+    <option value="Cmp">NFL Completions</option>
+    <option value="Int.1">NFL Interceptions</option>
+    <option value="CarAV">NFL Career Average</option>
+    <option value="Pick">NFL Draft Pick</option>
+    <option value="Rec">NFL Receiving Yards</option>
+    <option value="Rnd">NFL Draft Round</option>
+    <option value="TD.1">NFL Touchdowns</option>
+    <option value="Yds.1">NFL Total Yards</option>
+    <option value="rushing_attempts">College Rushing Attempts</option>
+    <option value="rushing_yards">College Rushing Yards</option>
+    <option value="Age">Age at Draft</option>
+    <option value="year_drafted">Year Drafted</option>
+</select>
+<select id="selectedFilterY">
+    <option value="Att.1" selected="selected">NFL Attempts</option>
+    <option value="CarAV">NFL Career Average</option>
+    <option value="Cmp">NFL Completions</option>
+    <option value="Int.1">NFL Interceptions</option>
+    <option value="CarAV">NFL Career Average</option>
+    <option value="Pick">NFL Draft Pick</option>
+    <option value="Rec">NFL Receiving Yards</option>
+    <option value="Rnd">NFL Draft Round</option>
+    <option value="TD.1">NFL Touchdowns</option>
+    <option value="Yds.1">NFL Total Yards</option>
+    <option value="rushing_attempts">College Rushing Attempts</option>
+    <option value="rushing_yards">College Rushing Yards</option>
+    <option value="Age">Age at Draft</option>
+    <option value="year_drafted">Year Drafted</option>
+</select>
+<select id="NFLPositionFilter">
+    <option value="ALL" selected="selected">All Positions</option>
+    <option value="RB">Running Back</option>
+    <option value="DB">Defensive Back</option>
+    <option value="DE">Defensive End</option>
+    <option value="LB">Linebacker</option>
+    <option value="WR">Wide Receiver</option>
+    <option value="QB">Quarterback</option>
+    <option value="T">Tackle</option>
+    <option value="K">Kicker</option>
+    <option value="TE">Tight End</option>
+    <option value="OL">Offensive Lineman</option>
+    <option value="FB">Fullback</option>
+    <option value="OLB">Outside Linebacker</option>
+    <option value="P">Punter</option>
+    <option value="G">Guard</option>
+    <option value="S">Safety</option>
+    <option value="CB">Cornerback</option>
+    <option value="ILB">Inside Linebacker</option>
+    <option value="DT">Defensive Tackle</option>
+</select>
+<select id="ColorProp">
+    <option value="None" selected="selected">None</option>
+    <option value="Att.1">NFL Attempts</option>
+    <option value="CarAV">NFL Career Average</option>
+    <option value="Cmp">NFL Completions</option>
+    <option value="Int.1">NFL Interceptions</option>
+    <option value="CarAV">NFL Career Average</option>
+    <option value="Pick">NFL Draft Pick</option>
+    <option value="Rec">NFL Receiving Yards</option>
+    <option value="Rnd">NFL Draft Round</option>
+    <option value="TD.1">NFL Touchdowns</option>
+    <option value="Yds.1">NFL Total Yards</option>
+    <option value="rushing_attempts">College Rushing Attempts</option>
+    <option value="rushing_yards">College Rushing Yards</option>
+    <option value="Age">Age at Draft</option>
+    <option value="year_drafted">Year Drafted</option>
+</select>
+<select id="RadiusProp">
+    <option value="None" selected="selected">None</option>
+    <option value="Att.1">NFL Attempts</option>
+    <option value="CarAV">NFL Career Average</option>
+    <option value="Cmp">NFL Completions</option>
+    <option value="Int.1">NFL Interceptions</option>
+    <option value="CarAV">NFL Career Average</option>
+    <option value="Pick">NFL Draft Pick</option>
+    <option value="Rec">NFL Receiving Yards</option>
+    <option value="Rnd">NFL Draft Round</option>
+    <option value="TD.1">NFL Touchdowns</option>
+    <option value="Yds.1">NFL Total Yards</option>
+    <option value="rushing_attempts">College Rushing Attempts</option>
+    <option value="rushing_yards">College Rushing Yards</option>
+    <option value="Age">Age at Draft</option>
+    <option value="year_drafted">Year Drafted</option>
+</select>
+<input type="range" name="mySlider" id="MaxRadius" min="1" max="15" value="3">
+<style type="text/css">
+    #selectedFilterX {
+        position: absolute;
+        top: 10px;
+        left: 100px;
+    }
+    #selectedFilterY {
+        position: absolute;
+        top: 30px;
+        left: 100px;
+    }
+    #NFLPositionFilter {
+        position: absolute;
+        top: 50px;
+        left: 100px;
+    }
+    #ColorProp {
+        position: absolute;
+        top: 10px;
+        left: 800px;
+    }
+    #RadiusProp {
+        position: absolute;
+        top: 30px;
+        left: 800px;
+    }
+    #MaxRadius {
+        position: absolute;
+        top: 50px;
+        left: 800px;
+    }
+    .d3-tip {
+        line-height: 1;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 10px;
+    }
+
+    .title {
+        line-height: 1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 24px;
+    }
+
+    .label {
+        line-height: 1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 12px;
+    }
+
+    .title {
+        line-height: 1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 24px;
+    }
+
+    .mid {
+        line-height: 1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        font-size: 12px;
+    }
+
+
+    @media print {
+        svg {
+            page-break-after: always;
+        }
+    }
+</style>
+
+<body>
+    <script type="text/javascript">
+        var margin = { top: 75, right: 100, bottom: 50, left: 50 }
+            , width = 900
+            , height = 350;
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("class", "svg")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        d3.dsv(",", "collegedata_draftdata_2010_2015.csv").then(function (data) {
+            data.forEach(element => {
+                element['Age'] = +element['Age']
+                element['Att.1'] = +element['Att.1']
+                element['CarAV'] = +element['CarAV']
+                element['Cmp'] = +element['Cmp']
+                element['DrAV'] = +element['DrAV']
+                element['G'] = +element['G']
+                element['Int.1'] = +element['Int.1']
+                element['Pick'] = +element['Pick']
+                element['Rec'] = +element['Rec']
+                element['Rnd'] = +element['Rnd']
+                element['TD.1'] = +element['TD.1']
+                element['Yds.1'] = +element['Yds.1']
+                element['rushing_attempts'] = +element['rushing_attempts']
+                element['rushing_yards'] = +element['rushing_yards']
+                element['year'] = +element['year']
+                element['year_drafted'] = +element['year_drafted']
+            })
+
+                var xselect = document.getElementById("selectedFilterX").value;
+                var yselect = document.getElementById("selectedFilterY").value;
+                var filterselect = document.getElementById("NFLPositionFilter").value;
+                var color = document.getElementById("ColorProp").value;
+                var radius = document.getElementById("RadiusProp").value;
+                var maxRadius = document.getElementById("MaxRadius").value;
+                makeGraph(data, xselect,yselect,filterselect, color, radius, maxRadius)
+
+            d3.select('#selectedFilterX')
+                .on("change", function () {
+                    var xselect = document.getElementById("selectedFilterX").value;
+                    var yselect = document.getElementById("selectedFilterY").value;
+                    var filterselect = document.getElementById("NFLPositionFilter").value;
+                    var color = document.getElementById("ColorProp").value;
+                    var radius = document.getElementById("RadiusProp").value;
+                    var maxRadius = document.getElementById("MaxRadius").value;
+                    makeGraph(data, xselect,yselect,filterselect, color, radius, maxRadius)
+                });
+
+            d3.select('#selectedFilterY')
+                .on("change", function () {
+                    var xselect = document.getElementById("selectedFilterX").value;
+                    var yselect = document.getElementById("selectedFilterY").value;
+                    var filterselect = document.getElementById("NFLPositionFilter").value;
+                    var color = document.getElementById("ColorProp").value;
+                    var radius = document.getElementById("RadiusProp").value;
+                    var maxRadius = document.getElementById("MaxRadius").value;
+                    makeGraph(data, xselect,yselect,filterselect, color, radius, maxRadius)
+                });
+
+            d3.select('#NFLPositionFilter')
+                .on("change", function () {
+                    var xselect = document.getElementById("selectedFilterX").value;
+                    var yselect = document.getElementById("selectedFilterY").value;
+                    var filterselect = document.getElementById("NFLPositionFilter").value;
+                    var color = document.getElementById("ColorProp").value;
+                    var radius = document.getElementById("RadiusProp").value;
+                    var maxRadius = document.getElementById("MaxRadius").value;
+                    makeGraph(data, xselect,yselect,filterselect, color, radius, maxRadius)
+                });
+
+            d3.select('#ColorProp')
+                .on("change", function () {
+                    var xselect = document.getElementById("selectedFilterX").value;
+                    var yselect = document.getElementById("selectedFilterY").value;
+                    var filterselect = document.getElementById("NFLPositionFilter").value;
+                    var color = document.getElementById("ColorProp").value;
+                    var radius = document.getElementById("RadiusProp").value;
+                    var maxRadius = document.getElementById("MaxRadius").value;
+                    makeGraph(data, xselect,yselect,filterselect, color, radius, maxRadius)
+                });
+
+            d3.select('#RadiusProp')
+                .on("change", function () {
+                    var xselect = document.getElementById("selectedFilterX").value;
+                    var yselect = document.getElementById("selectedFilterY").value;
+                    var filterselect = document.getElementById("NFLPositionFilter").value;
+                    var color = document.getElementById("ColorProp").value;
+                    var radius = document.getElementById("RadiusProp").value;
+                    var maxRadius = document.getElementById("MaxRadius").value;
+                    makeGraph(data, xselect,yselect,filterselect, color, radius, maxRadius)
+            });
+
+            d3.select('#MaxRadius')
+                .on("change", function () {
+                    var xselect = document.getElementById("selectedFilterX").value;
+                    var yselect = document.getElementById("selectedFilterY").value;
+                    var filterselect = document.getElementById("NFLPositionFilter").value;
+                    var color = document.getElementById("ColorProp").value;
+                    var radius = document.getElementById("RadiusProp").value;
+                    var maxRadius = document.getElementById("MaxRadius").value;
+                    makeGraph(data, xselect,yselect,filterselect, color, radius, maxRadius)
+            });
+        })
+        function makeGraph(data, dataX, dataY, filter, color, radius, maxRadius) {
+            d3.selectAll("circle").transition()
+              .attr("r", 0).duration(1000);
+              sleep(500).then(() => {
+                d3.select(".svg").selectAll("*").remove();
+            var tip = d3.tip()
+                .attr('class', 'd3-tip')
+                .html(function (d) {
+                    var htmlString = "Name: " + d['athlete_name'] + "</br> NFL Team: " + d['Tm'] + "</br> Univeristy: " + d['school_name']+ "</br> Position: " +d['Pos']
+                                      + "</br> Draft Round: " + d['Rnd'] + "</br> Draft Pick: " + d['Pick'] + "</br> Draft Year:" + d['year_drafted']+ "</br> College Attempts: " + d['rushing_attempts'] + "</br> College Rushing Yards: " + d['rushing_yards']
+                                      + "</br> NFL Total Yards: " + d['Yds.1'] + "</br> NFL Touchdowns: " + d['TD.1']
+                    return htmlString;
+                });
+
+            if (color != "None"){
+                var argMax = d3.max(data, function (d) {
+                    return d[color]
+                });
+
+                var argMin = d3.min(data, function (d) {
+                    return d[color]
+                });
+
+                var sequentialScale = d3.scaleSequential()
+                    .domain([argMin, argMax])
+                    .interpolator(d3.interpolateReds);
+
+            }
+
+            svg.append("text")
+                .attr("x", 0)
+                .attr("y", -margin.top + 15)
+                .style("text-anchor", "end")
+                .text("X Axis")
+                .attr("class", "label");
+            svg.append("text")
+                .attr("x", 0)
+                .attr("y", -margin.top + 35)
+                .style("text-anchor", "end")
+                .text("Y Axis")
+                .attr("class", "label");
+            svg.append("text")
+                .attr("x", 40)
+                .attr("y", -margin.top + 55)
+                .style("text-anchor", "end")
+                .text("Position Filter")
+                .attr("class", "label");
+            svg.append("text")
+                .attr("x", 425)
+                .attr("y", -margin.top + 25)
+                .style("text-anchor", "middle")
+                .text("College & NFL Data")
+                .attr("class", "title");
+            svg.append("text")
+                .attr("x", 725)
+                .attr("y", -margin.top + 15)
+                .style("text-anchor", "end")
+                .text("Color Proportionality")
+                .attr("class", "label");
+            svg.append("text")
+                .attr("x", 725)
+                .attr("y", -margin.top + 35)
+                .style("text-anchor", "end")
+                .text("Radius Proportionality")
+                .attr("class", "label");     
+            svg.append("text")
+                .attr("x", 725)
+                .attr("y", -margin.top + 55)
+                .style("text-anchor", "end")
+                .text("Max Radius")
+                .attr("class", "label");    
+
+            var filteredData = data;
+            if (filter != "ALL"){
+                filteredData = data.filter(x => x.Pos == filter)
+            }
+
+            var xMax = d3.max(data, function (d) {
+                return d[dataX]
+            });
+            var xMin = d3.min(data, function (d) {
+                return d[dataX]
+            });
+
+            var yMax = d3.max(data, function (d) {
+                return d[dataY]
+            });
+            var yMin = d3.min(data, function (d) {
+                return d[dataY]
+            });
+
+            var yScale = d3.scaleLinear()
+                .domain([yMin, yMax])
+                .range([height, 0])
+                .nice();
+
+            var xScale = d3.scaleLinear()
+                .domain([xMin, xMax])
+                .range([0, width - margin.right])
+                .nice();
+
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(d3.axisLeft(yScale));
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(xScale));
+
+            svg.call(tip);
+
+            if (radius != "None"){
+                var radMax = d3.max(data, function (d) {
+                    return d[radius] + 1
+                });
+
+                var radMin = d3.min(data, function (d) {
+                    return d[radius] + 1
+                });
+            }
+
+            var draw = function(selection) {
+            selection
+            .attr("r", function (d) {
+                    if (radius != "None"){
+                        if ((radMin / radMax) * d[radius] * maxRadius >= 1){
+                            if ((radMin / radMax) * d[radius] * maxRadius < 30){
+                                return (radMin / radMax) * d[radius] * maxRadius
+                            } else {
+                                return 30;
+                            }
+                        } else {
+                            return 2;
+                        }
+                    } else {
+                        return maxRadius;
+                    }
+                });
+        }
+
+
+            svg.selectAll(".dot")
+                .data(filteredData)
+                .enter().append("circle")
+                .attr("cx", function (d, i) {
+                    var x = xScale(d[dataX])
+                    return x;
+                })
+                .attr("cy", function (d) {
+                    var y = yScale(d[dataY])
+                    return y
+                })
+                .attr("r", 0)
+                .style("fill", function (d) {
+                    if (color != "None") {
+                        return sequentialScale(d[color]);
+                    }
+                })
+                .style("stroke", "black")
+                .style('stroke-width', 0.5)
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide)
+                .transition().duration(1000).call(draw);
+
+            })
+            
+
+        }
+
+        const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+            
+
+        
+
+    </script>
+</body>
+
+</html>
