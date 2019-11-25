@@ -8,6 +8,11 @@
 #### Consultant, Credera
 @snapend
 
+@snap[east]
+![alt text](credera.png)
+@snapend
+
+
 ---?color=linear-gradient(90deg, #9c1616 85%, white 15%)
 @snap[north-west h4-white]
 #### what is d3.js?
