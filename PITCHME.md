@@ -4,7 +4,8 @@
 @snapend
 
 @snap[south-east h4-white]
-## Shawnasty Bankovich
+#### Shawnasty Bankovich
+#### Consultant, Credera
 @snapend
 
 ---?color=linear-gradient(90deg, #9c1616 85%, white 15%)
