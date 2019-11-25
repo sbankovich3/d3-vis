@@ -3,13 +3,11 @@
 #### d3 & data visualizations
 @snapend
 
-@snap[south-east h4-white]
+
+@snap[east h4-#9c1616]
+![alt text](credera.png)
 #### Shawnasty Bankovich
 #### Consultant, Credera
-@snapend
-
-@snap[east]
-![alt text](credera.png)
 @snapend
 
 
