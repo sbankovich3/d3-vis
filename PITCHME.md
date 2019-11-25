@@ -171,14 +171,13 @@ svg.append("g")
 @snap[south span-100 text-gray text-08]
 @[6-11](uses previous scales to plot circle on svg with scaled x, y)
 @[12-14](appends y axis to svg using yScale)
-@[15](appends y axis to svg using yScale)
-@[16](what else can we customize? who are these people?)
+@[15](what else can we customize? who are these people?)
 @snapend
 
 ---
 
 @snap[north-east span-100 text-white text-06]
-tool tips [*](http://localhost:8000/d3-vis/vis/vis1-mid.html)
+tool tips [*](http://localhost:8000/d3-vis/vis/vis1-tip.html)
 @snapend
 
 ```javascript zoom-18
@@ -218,13 +217,13 @@ svg.selectAll(".circle")
    })
    .on('mouseover', tip.show)
    .on('mouseout', tip.hide);
-          
+                   
 ```
 
 @snap[south span-100 text-gray text-08]
 @[8-10](set opacity based on if an athlete was drafted)
 @[11-12](show and hide tool tip on mouseover)
-@[13]what else? add select to hide undrafted players
+@[13](what else? add select to hide undrafted players)
 @snapend
 
 ---
@@ -236,8 +235,8 @@ tool tips [*](http://localhost:8000/d3-vis/vis/vis1.html)
 ```javascript zoom-18
 d3.select('#selectedFilter')
   .on("change", function () {
-       var data = (document.getElementById("selectedFilter").value == 'hide') 
-                  ? data.filter(x => x.Pick > 0) : data
+       var data = document.getElementById("selectedFilter").value 
+                == 'hide' ? data.filter(x => x.Pick > 0) : data;
        makeGraph(data)
 });
      
