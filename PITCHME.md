@@ -235,15 +235,7 @@ tool tips [*](http://localhost:8000/d3-vis/vis/vis1-mid.html)
 // inside callback makeGraph(data)
 svg.selectAll(".circle")
    .data(data).enter().append("circle")
-   .attr("cx", function (d, i) {
-         return xScale(d['rushing_attempts']);
-   })
-   .attr("cy", function (d) {
-         return yScale(d['rushing_yards'])
-                })
-   .attr("r", function (d) {
-         return (d['Pick'] ? (300 - d.Pick) / 25 : 1);
-   })
+   (x, y, and radius previous code)
    .style("fill", function (d) {
          return (d['Pick'] ? sequentialScale(d['Pick']) : 'black');
    })
