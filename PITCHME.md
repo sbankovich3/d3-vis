@@ -3,7 +3,7 @@
 #### d3 & data visualizations
 @snapend
 
-@snap[south-east span-50 h4-white]
+@snap[south-east h4-white]
 ## Shawnasty Bankovich
 @snapend
 
