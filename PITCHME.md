@@ -4,9 +4,9 @@
 @snapend
 
 
-@snap[east h4-#9c1616]
+@snap[east h4-]
 ![alt text](credera.png)
-#### Shawnasty Bankovich
+@color[#9c1616](##### Shawnasty Bankovich)
 #### Consultant, Credera
 @snapend
 
