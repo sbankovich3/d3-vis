@@ -3,6 +3,10 @@
 #### d3 & data visualizations
 @snapend
 
+@snap[south-east span-50 h4-white]
+## Shawnasty Bankovich
+@snapend
+
 ---?color=linear-gradient(90deg, #9c1616 85%, white 15%)
 @snap[north-west h4-white]
 #### what is d3.js?
