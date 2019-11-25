@@ -228,7 +228,7 @@ svg.call(tip);
 ---
 
 @snap[north-east span-100 text-white text-06]
-tool tips [*](http://localhost:8000/d3-vis/vis/vis1-mid.html)
+tool tips [*](http://localhost:8000/d3-vis/vis/vis1-tip.html)
 @snapend
 
 ```javascript zoom-18
@@ -244,13 +244,32 @@ svg.selectAll(".circle")
    })
    .on('mouseover', tip.show)
    .on('mouseout', tip.hide);
-     
+      
+```
+
+@snap[south span-100 text-gray text-08]
+@[8-10](set opacity based on if an athlete was drafted)
+@[11-12](show and hide tool tip on mouseover)
+@[13]what else? add select to hide undrafted players
+@snapend
+
+---
+
+@snap[north-east span-100 text-white text-06]
+tool tips [*](http://localhost:8000/d3-vis/vis/vis1.html)
+@snapend
+
+```javascript zoom-18
+d3.select('#selectedFilter')
+  .on("change", function () {
+       var data = (document.getElementById("selectedFilter").value == 'hide') 
+                  ? data.filter(x => x.Pick > 0) : data
+       makeGraph(data)
+});
      
 ```
 
 @snap[south span-100 text-gray text-08]
-@[1-2](create tip and add class)
-@[3-5](return athlete name as html to display)
-@[6](appends y axis to svg using yScale)
-@[7]what else? the circles of undrafted players get in the way
+@[1-2](on change of select, get value)
+@[3-6](filter data based on value)
 @snapend
