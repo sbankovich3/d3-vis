@@ -32,7 +32,7 @@
 @snap[east span-45]
 @snapend
 
----?color=linear-gradient(90deg, #9c1616 85%, white 15%)
+---?color=#9c1616
 @snap[north-west h4-white]
 #### d3.js basics
 @snapend
