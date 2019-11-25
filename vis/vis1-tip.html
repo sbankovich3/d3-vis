@@ -3,7 +3,10 @@
 <script src="../lib/d3.v5.min.js"></script>
 <script src="../lib/d3-dsv.min.js"></script>
 <script src="../lib/d3-tip.min.js"></script>
-
+<select id="selectedFilter">
+    <option value="show" selected="selected">Show undrafted players</option>
+    <option value="hide">Hide undrafted players</option>
+</select>
 <style type="text/css">
     #selectedFilter {
         position: absolute;
@@ -52,9 +55,9 @@
 
 <body>
     <script type="text/javascript">
-        var margin = { top: 100, right: 75, bottom: 50, left: 50 }
+        var margin = { top: 100, right: 100, bottom: 50, left: 50 }
             , width = 900
-            , height = 300;
+            , height = 400;
 
         var svg = d3.select("body").append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -91,6 +94,17 @@
 
         function makeGraph(data) {
             d3.select(".svg").selectAll("*").remove();
+            var tip = d3.tip()
+                .attr('class', 'd3-tip')
+                .html(function (d) {
+                    var yards_per_carry = d['rushing_yards'] / d['rushing_attempts']
+                    var draftNo = d['Pick']
+                    var htmlString = "Name: " + d['athlete_name'] + " <br>Yards / Attempt: " + yards_per_carry.toFixed(4) + " <br>Yards: " + d['rushing_yards'] + " <br>Attempts: " + d['rushing_attempts'] + " <br>School: " + d['school_name'];
+                    if (draftNo > 0) {
+                        htmlString = htmlString + " <br>Draft Number: " + draftNo;
+                    }
+                    return htmlString;
+                });
 
             var carrMax = d3.max(data, function (d) {
                 return d['rushing_attempts']
@@ -126,6 +140,8 @@
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(xScale));
 
+            svg.call(tip);
+
             svg.selectAll(".dot")
                 .data(data)
                 .enter().append("circle")
@@ -150,7 +166,16 @@
                     }
                 })
                 .style("stroke", "black")
-                .style('stroke-width', 0.5);
+                .style('stroke-width', 0.5)
+                .style("opacity",  function (d) {
+                    if (!d.Pick) {
+                        return 0.25
+                    } else {
+                        return 1
+                    }
+                })
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide);
 
             svg.append("text")
                 .attr("x", (width - margin.right) / 2)
