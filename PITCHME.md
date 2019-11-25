@@ -82,12 +82,14 @@ d3.dsv(",", "ncaa_nfl.csv").then(function (data) {
         });
    // callback
 });
+     
 ```
 
 @snap[south span-100 text-gray text-08]
 @[2](load data and choose delimiter.)
 @[1,3-8, zoom-13](format data with correct type)
 @[9-10, zoom-12](do something with the data in a callback)
+@[11, zoom-12](how do we use this data?)
 @snapend
 
 ---
@@ -102,6 +104,7 @@ svg.selectAll("circle")
    .data(data)
    .enter()
    .append("circle");
+    
 ```
 
 @snap[south span-100 text-gray text-08]
@@ -109,6 +112,7 @@ svg.selectAll("circle")
 @[3](joins data with return from select)
 @[4](joins data with placeholder for circles)
 @[5](appends circle to svg)
+@[6](how do we put circles where we want them?)
 @snapend
 
 ---
@@ -128,6 +132,7 @@ var xScale = d3.scaleLinear()
                .domain([xMin, xMax])
                .range([0, width - margin.right])
                .nice();
+     
 ```
 
 @snap[south span-100 text-gray text-08]
@@ -136,12 +141,13 @@ var xScale = d3.scaleLinear()
 @[7-8](creates a linear scale between xMin and xMax)
 @[9](sets the range of the x axis to be from the beginning of svg to end minus margin)
 @[10](nice function will ensure ticks are on nice round values)
+@[11](how do we use this scale for our cicles?)
 @snapend
 
 ---
 
 @snap[north-east span-100 text-white text-06]
-dynamically scaling data & add axis
+dynamically scaling data & add axis [*](https://www.example.com)
 @snapend
 
 ```javascript zoom-18
@@ -159,9 +165,12 @@ svg.selectAll("circle")
 svg.append("g")
     .attr("class", "y axis")
     .call(d3.axisLeft(yScale));
+     
 ```
 
 @snap[south span-100 text-gray text-08]
 @[6-11](uses previous scales to plot circle on svg with scaled x, y)
 @[12-14](appends y axis to svg using yScale)
+@[15](appends y axis to svg using yScale)
+@[15]what else can we customize?
 @snapend
