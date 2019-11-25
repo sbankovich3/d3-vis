@@ -147,7 +147,7 @@ var xScale = d3.scaleLinear()
 ---
 
 @snap[north-east span-100 text-white text-06]
-dynamically scaling data & add axis [*](https://www.example.com)
+dynamically scaling data & add axis [*](http://localhost:8000/d3-vis/vis/vis1-mid.html)
 @snapend
 
 ```javascript zoom-18
