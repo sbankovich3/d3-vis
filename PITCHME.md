@@ -1,4 +1,4 @@
----?color=linear-gradient(90deg, #9c1616 85%, white 15%)
+---?color=linear-gradient(90deg, #9c1616 66%, white 34%)
 @snap[north-west h4-white]
 #### d3 & data visualizations
 @snapend
