@@ -172,7 +172,7 @@ svg.append("g")
 @[6-11](uses previous scales to plot circle on svg with scaled x, y)
 @[12-14](appends y axis to svg using yScale)
 @[15](appends y axis to svg using yScale)
-@[15](what else can we customize? who are these people?)
+@[16](what else can we customize? who are these people?)
 @snapend
 
 ---
@@ -193,10 +193,10 @@ svg.call(tip);
 ```
 
 @snap[south span-100 text-gray text-08]
-@[1-2](create tip and add class)
-@[3-5](return athlete name as html to display)
-@[6](appends y axis to svg using yScale)
-@[7](what else? the undrafted players get in the way)
+@[2-3](create tip and add class)
+@[4-6](return athlete name as html to display)
+@[7](appends y axis to svg using yScale)
+@[8](what else? the undrafted players get in the way)
 @snapend
 
 ---
