@@ -7,7 +7,7 @@
 @snap[east h4-]
 ![alt text](credera.png)
 @color[#9c1616](##### Shawnasty Bankovich)
-#### Consultant, Credera
+<div class="align-right">Consultant, Credera</div>
 @snapend
 
 
