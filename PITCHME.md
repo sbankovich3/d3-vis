@@ -4,12 +4,14 @@
 @snapend
 
 
-@snap[east h4-]
-![alt text](credera.png)
-@color[#9c1616](##### Shawnasty Bankovich)
-<div class="align-right">Consultant, Credera</div>
+@snap[east]
+![](credera.png)
 @snapend
 
+@snap[south]
+@color[#9c1616](##### Shawnasty Bankovich)
+@color[#9c1616](##### Consultant, Credera)
+@snapend
 
 ---?color=linear-gradient(90deg, #9c1616 85%, white 15%)
 @snap[north-west h4-white]
