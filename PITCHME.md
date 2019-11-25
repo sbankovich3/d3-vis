@@ -9,11 +9,11 @@
 @snapend
 
 @snap[south h4-white]
-##### Shawnasty Bankovich
-##### Consultant, Credera
+#### Shawnasty Bankovich
+#### Consultant, Credera
 @snapend
 
----?color=linear-gradient(90deg, #9c1616 85%, white 15%)
+---?color=#9c1616
 @snap[north-west h4-white]
 #### what is d3.js?
 @snapend
