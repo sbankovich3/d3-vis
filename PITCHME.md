@@ -1,16 +1,17 @@
----?color=linear-gradient(90deg, #9c1616 66%, white 34%)
-@snap[north-west h4-white]
+---?color=white
+@snap[north-west h4-black]
 #### d3 & data visualizations
 @snapend
 
 
 @snap[east]
-![](credera.png)
+![](d3.png)
 @snapend
 
-@snap[south h4-white]
+@snap[south h4-black
 #### Shawnasty Bankovich
 #### Consultant, Credera
+#### MS CS Candidate, Georgia Tech
 @snapend
 
 ---?color=#9c1616
