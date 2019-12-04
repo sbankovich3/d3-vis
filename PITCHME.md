@@ -4,14 +4,14 @@
 ![](d3.png)
 @snapend
 
-@snap[north-west h4-black]
-#### d3 & data visualizations
+@snap[north-west h3-black]
+### d3 & data visualizations
 @snapend
 
-@snap[south h4-black
-#### Shawnasty Bankovich
-#### Consultant, Credera
-#### MS CS Candidate, Georgia Tech
+@snap[south h6-black
+###### Shawnasty Bankovich
+###### Consultant, Credera
+###### MS CS Candidate, Georgia Tech
 @snapend
 
 ---?color=#9c1616
