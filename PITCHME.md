@@ -1,7 +1,7 @@
 ---?color=white
 
 @snap[east]
-![](d3.png)
+![](d3_4.png)
 @snapend
 
 @snap[north-west h4-black]
