@@ -157,7 +157,7 @@ var xScale = d3.scaleLinear()
 ---
 
 @snap[north-east span-100 text-white text-06]
-dynamically scaling data & add axis [*](http://localhost:8000/d3-vis/vis/vis1-mid.html)
+dynamically scaling data & add axis [*](s3://dva-project-bucket/visualizations/vis1-mid.html)
 @snapend
 
 ```javascript zoom-18
@@ -181,13 +181,13 @@ svg.append("g")
 @snap[south span-100 text-gray text-08]
 @[6-11](uses previous scales to plot circle on svg with scaled x, y)
 @[12-14](appends y axis to svg using yScale)
-@[15](what else can we customize? who are these people?)
+@[15](what else can we customize? what are these circles?)
 @snapend
 
 ---
 
 @snap[north-east span-100 text-white text-06]
-tool tips [*](http://localhost:8000/d3-vis/vis/vis1-tip.html)
+tool tips [*](s3://dva-project-bucket/visualizations/vis1-tip.html)
 @snapend
 
 ```javascript zoom-18
@@ -211,7 +211,7 @@ svg.call(tip);
 ---
 
 @snap[north-east span-100 text-white text-06]
-tool tips [*](http://localhost:8000/d3-vis/vis/vis1-tip.html)
+inputs [*](s3://dva-project-bucket/visualizations/vis1-tip.html)
 @snapend
 
 ```javascript zoom-18
@@ -239,7 +239,7 @@ svg.selectAll(".circle")
 ---
 
 @snap[north-east span-100 text-white text-06]
-tool tips [*](http://localhost:8000/d3-vis/vis/vis1.html)
+inputs [*](s3://dva-project-bucket/visualizations/vis1.html)
 @snapend
 
 ```javascript zoom-18
