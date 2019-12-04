@@ -8,12 +8,7 @@
 ### d3 & data visualizations
 @snapend
 
-@snap[south h6-black
-
-
-
-
-
+@snap[south
 Shawnasty Bankovich
 Consultant, Credera
 @snapend
