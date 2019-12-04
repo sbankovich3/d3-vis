@@ -9,9 +9,9 @@
 @snapend
 
 @snap[south h6-black
-###### Shawnasty Bankovich
-###### Consultant, Credera
-###### MS CS Candidate, Georgia Tech
+Shawnasty Bankovich
+Consultant, Credera
+MS CS Candidate, Georgia Tech
 @snapend
 
 ---?color=#9c1616
