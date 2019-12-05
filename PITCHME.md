@@ -187,7 +187,7 @@ svg.append("g")
 ---
 
 @snap[north-east span-100 text-white text-06]
-tool tips [*](s3://dva-project-bucket/visualizations/vis1-tip.html)
+tool tips [*](https://dva-project-bucket.s3.us-east-1.amazonaws.com/visualizations/vis1-tip.html)
 @snapend
 
 ```javascript zoom-18
@@ -211,7 +211,7 @@ svg.call(tip);
 ---
 
 @snap[north-east span-100 text-white text-06]
-inputs [*](s3://dva-project-bucket/visualizations/vis1-tip.html)
+inputs [*](https://dva-project-bucket.s3.us-east-1.amazonaws.com/visualizations/vis1-tip.html)
 @snapend
 
 ```javascript zoom-18
@@ -239,7 +239,7 @@ svg.selectAll(".circle")
 ---
 
 @snap[north-east span-100 text-white text-06]
-inputs [*](s3://dva-project-bucket/visualizations/vis1.html)
+inputs [*](https://dva-project-bucket.s3.us-east-1.amazonaws.com/visualizations/vis1.html)
 @snapend
 
 ```javascript zoom-18
@@ -256,4 +256,4 @@ d3.select('#selectedFilter')
 @[1-2](on change of select, get value)
 @[3-6](filter data based on value)
 @snapend
----
+---?color=black
