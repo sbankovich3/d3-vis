@@ -25,7 +25,7 @@ Consultant, Credera
 - functional javascript
 - full capibility of modern browser
 - attach data to DOM elements
-- customize with CSS, HTML, and SVG
+- customize with CSS, HTML, SVG
 - without tied to proprietary software
 @ulend
 @snapend
