@@ -3,16 +3,8 @@
 <script src="../lib/d3.v5.min.js"></script>
 <script src="../lib/d3-dsv.min.js"></script>
 <script src="../lib/d3-tip.min.js"></script>
-<select id="selectedFilter">
-    <option value="show" selected="selected">Show undrafted players</option>
-    <option value="hide">Hide undrafted players</option>
-</select>
 <style type="text/css">
-    #selectedFilter {
-        position: absolute;
-        top: 30px;
-        left: 50px;
-    }
+
 
     .d3-tip {
         line-height: 1;
@@ -78,18 +70,7 @@
 
 
 
-            makeGraph(data, 'show')
-            d3.select('#selectedFilter')
-                .on("change", function () {
-                    var selct = document.getElementById("selectedFilter").value;
-                    if (selct == "hide") {
-                        var filteredData = data.filter(x => x.Pick > 0)
-                        makeGraph(filteredData)
-                    } else {
-                        makeGraph(data)
-                    }
-
-                });
+            makeGraph(data, 'show');
         })
 
         function makeGraph(data) {

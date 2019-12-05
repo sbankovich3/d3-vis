@@ -187,7 +187,7 @@ svg.append("g")
 ---
 
 @snap[north-east span-100 text-white text-06]
-tool tips [*](https://dva-project-bucket.s3.us-east-1.amazonaws.com/visualizations/vis1-tip.html)
+tool tips
 @snapend
 
 ```javascript zoom-18
@@ -211,7 +211,7 @@ svg.call(tip);
 ---
 
 @snap[north-east span-100 text-white text-06]
-inputs [*](https://dva-project-bucket.s3.us-east-1.amazonaws.com/visualizations/vis1-tip.html)
+tool tips[*](https://dva-project-bucket.s3.us-east-1.amazonaws.com/visualizations/vis1-tip.html)
 @snapend
 
 ```javascript zoom-18
