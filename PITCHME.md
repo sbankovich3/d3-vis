@@ -78,7 +78,7 @@ var svg = d3.select("body")
 ---
 
 @snap[north-east span-100 text-white text-06]
-loading & cleaning data
+load & clean data
 @snapend
 
 ```javascript zoom-18
@@ -105,7 +105,7 @@ d3.dsv(",", "ncaa_nfl.csv").then(function (data) {
 ---
 
 @snap[north-east span-100 text-white text-06]
-selecting & binding data to DOM elements
+select & bind data to DOM elements
 @snapend
 
 ```javascript zoom-18
@@ -122,13 +122,13 @@ svg.selectAll("circle")
 @[3](joins data with return from select)
 @[4](joins data with placeholder for circles)
 @[5](appends circle to svg)
-@[6](how do we put circles where we want them?)
+@[6](how do we represent data with circles?)
 @snapend
 
 ---
 
 @snap[north-east span-100 text-white text-06]
-dynamically scaling data & add axis
+dynamically scale data & add axis
 @snapend
 
 ```javascript zoom-18
@@ -157,7 +157,7 @@ var xScale = d3.scaleLinear()
 ---
 
 @snap[north-east span-100 text-white text-06]
-dynamically scaling data & add axis [*](s3://dva-project-bucket/visualizations/vis1-mid.html)
+dynamically scale data & add axis [*](s3://dva-project-bucket/visualizations/vis1-mid.html)
 @snapend
 
 ```javascript zoom-18
@@ -204,7 +204,7 @@ svg.call(tip);
 @snap[south span-100 text-gray text-08]
 @[2-3](create tip and add class)
 @[4-6](return athlete name as html to display)
-@[7](appends y axis to svg using yScale)
+@[7](calls tip to svg)
 @[8](what else? the undrafted players get in the way)
 @snapend
 
