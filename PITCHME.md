@@ -1,6 +1,6 @@
 ---?color=white
 
-@snap[north h3-black]
+@snap[north span-500 h3-black]
 ### d3 & data visualizations
 ![](d3.png)
 @snapend
