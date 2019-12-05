@@ -43,6 +43,11 @@ Consultant, Credera
 - tool tips, inputs, & animations
 @ulend
 @snapend
+
+@snap[east span-250]
+![](d3.png)
+@snapend
+
 ---
 
 @snap[north-east span-100 text-white text-06]
