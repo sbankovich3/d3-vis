@@ -147,7 +147,7 @@ var xScale = d3.scaleLinear()
 
 @snap[south span-100 text-gray text-08]
 @[1-3](computes maximum from dataX of data)
-@[4-6](computes maximum from dataX of data)
+@[4-6](computes minimum from dataX of data)
 @[7-8](creates a linear scale between xMin and xMax)
 @[9](sets the range of the x axis to be from the beginning of svg to end minus margin)
 @[10](nice function will ensure ticks are on nice round values)
@@ -157,7 +157,7 @@ var xScale = d3.scaleLinear()
 ---
 
 @snap[north-east span-100 text-white text-06]
-dynamically scale data & add axis [*](s3://dva-project-bucket/visualizations/vis1-mid.html)
+dynamically scale data & add axis [*](https://dva-project-bucket.s3.us-east-1.amazonaws.com/visualizations/vis1-mid.html)
 @snapend
 
 ```javascript zoom-18
@@ -256,3 +256,4 @@ d3.select('#selectedFilter')
 @[1-2](on change of select, get value)
 @[3-6](filter data based on value)
 @snapend
+---
