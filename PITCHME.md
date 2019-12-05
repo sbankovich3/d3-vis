@@ -10,13 +10,17 @@ Shawnasty Bankovich
 Consultant, Credera
 @snapend
 
----?color=#9c1616
+---?color=white
 @snap[north-west h4-white]
 #### what is d3.js?
 @snapend
 
+@snap[east]
+![](d3.png)
+@snapend
+
 @snap[west span-80]
-@ul[list-spaced-bullets text-white text-09]
+@ul[list-spaced-bullets text-black text-09]
 - <u>d</u>ata <u>d</u>riven <u>d</u>ocuments
 - functional javascript
 - full capibility of modern browser
@@ -26,24 +30,18 @@ Consultant, Credera
 @ulend
 @snapend
 
-@snap[east span-45]
-@snapend
-
----?color=#9c1616
-@snap[north-west h4-white]
+---?color=white
+@snap[north-west h4-black]
 #### d3.js basics
 @snapend
 
 @snap[west span-80]
-@ul[list-spaced-bullets text-white text-09]
+@ul[list-spaced-bullets text-black text-09]
 - loading & cleaning data
 - selecting & binding data to DOM elements
 - dynamically scaling data & add axis
 - tool tips, inputs, & animations
 @ulend
-@snapend
-
-@snap[east span-45]
 @snapend
 ---
 
