@@ -1,11 +1,8 @@
 ---?color=white
 
-@snap[east]
-![](d3.png)
-@snapend
-
-@snap[north-west h3-black]
+@snap[north h3-black]
 ### d3 & data visualizations
+![](d3.png)
 @snapend
 
 @snap[south span-100 text-gray text-08]
