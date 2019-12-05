@@ -8,7 +8,7 @@
 ### d3 & data visualizations
 @snapend
 
-@snap[south
+@snap[south span-100 text-gray text-08]
 Shawnasty Bankovich
 Consultant, Credera
 @snapend
