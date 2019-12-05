@@ -37,9 +37,9 @@ Consultant, Credera
 
 @snap[west span-80]
 @ul[list-spaced-bullets text-black text-09]
-- loading & cleaning data
-- selecting & binding data to DOM elements
-- dynamically scaling data & add axis
+- load & clean data
+- select & bind data to DOM elements
+- dynamically scale data & add axis
 - tool tips, inputs, & animations
 @ulend
 @snapend
