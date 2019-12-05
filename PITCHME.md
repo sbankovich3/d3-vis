@@ -11,11 +11,11 @@ Consultant, Credera
 @snapend
 
 ---?color=white
-@snap[north-west h4-white]
+@snap[north-west h4-black]
 #### what is d3.js?
 @snapend
 
-@snap[east]
+@snap[east span-250]
 ![](d3.png)
 @snapend
 
